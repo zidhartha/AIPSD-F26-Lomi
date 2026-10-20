@@ -4,14 +4,16 @@ A mentor that answers a new employee's questions from their company's own docume
 ## Commands
 install:  pip install -r requirements.txt
 run:      python -m src.ask "How do I request time off?"
+notice:   python -m src.extract tests/images/clean.jpg
 test:     python -m pytest -q tests
 
 ## Conventions
 - Model: env `OPENROUTER_API_KEY` and `MODEL`. Default `MODEL` is `google/gemini-3.8-flash`. Never hard-code a key.
 - Every model call goes through `src/llm.py` and appends one line to `logs/usage.jsonl`: model, tokens in, tokens out, cost, latency.
-- Dates are ISO. Answer in the language of the question. Quote money and durations as the source document writes them.
-- Success shape: `{answer, citations, grounded}`. Refusal is `grounded: false` plus the fixed refusal sentence, not an exception. Request errors are `{error, detail}`.
-- Every new feature ships with a test that would fail if the feature broke, and a golden question once the answer path exists.
+- Downscale a notice photo to 1024 px on the longest side before sending it. Evidence is nullable. Never guess a field.
+- Never prefill a low-confidence or missing value into a form. `decide()` leaves hard fields empty.
+- Dates are ISO. Quote money and durations as the source document writes them.
+- Success shape: `{answer, citations, grounded}`. Refusal text is `That is not in the company documents.` Request errors are `{error, detail}`.
 
 ## Always
 - Run the test command before saying you are done, and paste the result

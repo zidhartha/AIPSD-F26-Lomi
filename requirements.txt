@@ -1,1 +1,4 @@
 pytest
+pydantic
+pillow
+openai

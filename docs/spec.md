@@ -26,7 +26,7 @@ Python 3.11. No new dependency in this slice. Tests never call a model or the ne
 
 ## Out of scope
 
-Company signup, subscription plans, employee accounts, progress tracking, quizzes, photo upload, and a model paraphrasing the passage.
+Company signup, subscription plans, employee accounts, progress tracking, and quizzes. A photographed notice is the Lab 3 slice. A model answer with citations is the Lab 4 slice. The first slice still returns the passage itself.
 
 ## Verification
 
@@ -36,7 +36,11 @@ Company signup, subscription plans, employee accounts, progress tracking, quizze
 
 Criteria: AC1, AC2, AC3
 Done when: `tests/test_ask.py` passes locally and in CI
-Not in this slice: AC5 is tested here because it is a pure check, but a model that writes the answer is later. Photos, accounts, and billing are later.
+Not in this slice: AC5 is tested here because it is a pure check, but a model that writes the answer is later. Photos are the Lab 3 slice.
+
+## Notice photo (Lab 3)
+
+A new hire photographs one printed company notice. `src/extract.py` returns `value`, `evidence`, and `confidence` for title, action, timing, and contact. `src/checks.py` `decide()` then routes it to accepted, confirm, review, or rejected. A missing or unevidenced required field is hard: it is shown empty, never prefilled. Spec: `docs/multimodal-spec.md`. Policy: `docs/confidence-policy.md`.
 
 ## Napkin math
 
