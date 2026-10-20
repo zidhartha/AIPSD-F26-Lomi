@@ -1,0 +1,29 @@
+{
+  "updated": "2026-10-06",
+  "scholarships": [
+    {
+      "name": "Need-Based Grant",
+      "deadline": "2026-11-15",
+      "amount_gel": 1500,
+      "eligibility": "Full-time KIU undergraduates"
+    },
+    {
+      "name": "Merit Award",
+      "deadline": "2026-10-20",
+      "amount_gel": 2000,
+      "eligibility": "GPA 3.5 or higher"
+    },
+    {
+      "name": "Dean's List Award",
+      "deadline": "2026-12-01",
+      "amount_gel": 1000,
+      "eligibility": "Dean's list in the previous semester"
+    },
+    {
+      "name": "Summer Research Stipend",
+      "deadline": "2026-09-30",
+      "amount_gel": 800,
+      "eligibility": "Second-year students and above"
+    }
+  ]
+}
