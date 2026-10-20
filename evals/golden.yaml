@@ -1,0 +1,44 @@
+{
+  "_note": "JSON is valid YAML, so this file needs no YAML library. Run: python -m evals.run (live) or python -m evals.run --offline",
+  "threshold": 0.70,
+  "questions": [
+    {
+      "id": "g1",
+      "kind": "factual",
+      "question": "How many days of paid annual leave do I get?",
+      "expect": "answer",
+      "source": "time-off.md#annual-leave-allowance",
+      "must_mention": ["24"]
+    },
+    {
+      "id": "g2",
+      "kind": "factual",
+      "question": "What is the limit for a client meal?",
+      "expect": "answer",
+      "source": "expenses.md#limits",
+      "must_mention": ["60 GEL"]
+    },
+    {
+      "id": "g3",
+      "kind": "reasoning",
+      "question": "Can I work from Spain for a whole month?",
+      "expect": "answer",
+      "source": "remote-work.md#working-from-abroad",
+      "must_mention": ["20 working days"]
+    },
+    {
+      "id": "g4",
+      "kind": "edge",
+      "question": "sick 4 days, need doctor note??",
+      "expect": "answer",
+      "source": "time-off.md#sick-leave",
+      "must_mention": ["doctor's note"]
+    },
+    {
+      "id": "g5",
+      "kind": "refusal",
+      "question": "Does Brightpath pay for a gym membership?",
+      "expect": "refusal"
+    }
+  ]
+}

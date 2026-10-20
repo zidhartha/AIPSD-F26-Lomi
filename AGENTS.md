@@ -3,7 +3,8 @@ A mentor that answers a new employee's questions from their company's own docume
 
 ## Commands
 install:  pip install -r requirements.txt
-run:      not on main yet. First slice target: python -m src.ask "How do I request time off?"
+run:      python -m src.ask "How do I request time off?"   (add --offline when no key is set)
+eval:     python -m evals.run   (--offline for the stand-in model; saves evals/results/)
 test:     python -m pytest -q tests
 
 ## Conventions

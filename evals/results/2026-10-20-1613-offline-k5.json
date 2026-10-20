@@ -1,0 +1,192 @@
+{
+  "run_at": "2026-10-20T16:13",
+  "mode": "offline",
+  "model": "offline-stand-in",
+  "k": 5,
+  "retrieval_threshold": 3.5,
+  "pass_threshold": 0.7,
+  "passed": 4,
+  "total": 5,
+  "pass_rate": 0.8,
+  "gate": "pass",
+  "results": [
+    {
+      "id": "g1",
+      "kind": "factual",
+      "question": "How many days of paid annual leave do I get?",
+      "passed": true,
+      "why": "answered from the expected source",
+      "reply": {
+        "answer": "Every full-time employee has 24 working days of paid annual leave per calendar year. Employees who join during the year receive a share of the 24 days in proportion to the months left in the year. Up to 5 unused days can be carried over to the next year; carried-over days expire on 31 March.",
+        "citations": [
+          "time-off.md#annual-leave-allowance"
+        ],
+        "grounded": true
+      },
+      "trace": {
+        "retrieved": [
+          [
+            "time-off.md#annual-leave-allowance",
+            7.1
+          ],
+          [
+            "expenses.md#how-to-claim-an-expense",
+            2.83
+          ],
+          [
+            "time-off.md#sick-leave",
+            2.74
+          ],
+          [
+            "time-off.md#public-holidays",
+            2.31
+          ],
+          [
+            "security.md#laptops",
+            2.14
+          ]
+        ],
+        "model_called": true,
+        "cost_usd": 0.0,
+        "latency_ms": 0,
+        "stage": "answered"
+      }
+    },
+    {
+      "id": "g2",
+      "kind": "factual",
+      "question": "What is the limit for a client meal?",
+      "passed": true,
+      "why": "answered from the expected source",
+      "reply": {
+        "answer": "A single client meal is reimbursed up to 60 GEL per person. A taxi to or from the airport is reimbursed up to 50 GEL per trip. Anything above a limit needs written approval from the finance lead before the purchase.",
+        "citations": [
+          "expenses.md#limits"
+        ],
+        "grounded": true
+      },
+      "trace": {
+        "retrieved": [
+          [
+            "expenses.md#limits",
+            7.52
+          ],
+          [
+            "expenses.md#what-can-be-reimbursed",
+            5.24
+          ]
+        ],
+        "model_called": true,
+        "cost_usd": 0.0,
+        "latency_ms": 0,
+        "stage": "answered"
+      }
+    },
+    {
+      "id": "g3",
+      "kind": "reasoning",
+      "question": "Can I work from Spain for a whole month?",
+      "passed": false,
+      "why": "refused instead of answering",
+      "reply": {
+        "answer": "I could not find this in the company documents, so I will not guess. Please ask HR or your team lead.",
+        "citations": [],
+        "grounded": false
+      },
+      "trace": {
+        "retrieved": [
+          [
+            "first-weeks.md#probation",
+            3.11
+          ],
+          [
+            "remote-work.md#office-days",
+            1.99
+          ],
+          [
+            "first-weeks.md#your-buddy",
+            1.89
+          ],
+          [
+            "remote-work.md#core-hours",
+            1.35
+          ],
+          [
+            "time-off.md#annual-leave-allowance",
+            1.33
+          ]
+        ],
+        "model_called": false,
+        "stage": "retrieval_below_threshold"
+      }
+    },
+    {
+      "id": "g4",
+      "kind": "edge",
+      "question": "sick 4 days, need doctor note??",
+      "passed": true,
+      "why": "answered from the expected source",
+      "reply": {
+        "answer": "If you are sick, message your team lead before 10:00 on the first day. Sick leave of up to 3 consecutive days needs no document. From the fourth consecutive day you need a doctor's note uploaded to the HR portal.",
+        "citations": [
+          "time-off.md#sick-leave"
+        ],
+        "grounded": true
+      },
+      "trace": {
+        "retrieved": [
+          [
+            "time-off.md#sick-leave",
+            9.94
+          ],
+          [
+            "remote-work.md#office-days",
+            1.02
+          ],
+          [
+            "time-off.md#annual-leave-allowance",
+            0.95
+          ],
+          [
+            "time-off.md#public-holidays",
+            0.89
+          ],
+          [
+            "time-off.md#how-to-request-time-off",
+            0.88
+          ]
+        ],
+        "model_called": true,
+        "cost_usd": 0.0,
+        "latency_ms": 0,
+        "stage": "answered"
+      }
+    },
+    {
+      "id": "g5",
+      "kind": "refusal",
+      "question": "Does Brightpath pay for a gym membership?",
+      "passed": true,
+      "why": "refused",
+      "reply": {
+        "answer": "I could not find this in the company documents, so I will not guess. Please ask HR or your team lead.",
+        "citations": [],
+        "grounded": false
+      },
+      "trace": {
+        "retrieved": [
+          [
+            "time-off.md#public-holidays",
+            2.25
+          ],
+          [
+            "expenses.md#what-can-be-reimbursed",
+            2.16
+          ]
+        ],
+        "model_called": false,
+        "stage": "retrieval_below_threshold"
+      }
+    }
+  ]
+}
