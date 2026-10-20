@@ -1,13 +1,18 @@
-# Team Contract · [Team name]
+# Team Contract · Lomi
 
 *Due with team lock, end of Week 3. Signed by everyone. Short beats ceremonial.*
 
 ## Members and roles
 | Name | GitHub | Primary role | Backup role |
 |---|---|---|---|
-| Davit Jincharadze  | Zidhartha | Backend Developer | AI Engineer |
+| Davit Jincharadze | zidhartha | Repo keeper | Spec keeper |
+| Irakli Giguashvili | Irakligig | Eval keeper | Repo keeper |
+| Elene Kifiani | Elene27 | backup Spec keeper | backup Eval keeper |
+| Sandro Paikidze | SanndroP | backup Repo keeper | backup Spec keeper |
 
-Roles rotate or stay fixed: [choose]. On Demo Day, anyone answers anything, so backup roles are how you learn each other's parts.
+Standing roles: Davit keeps the repo and the spec. Irakli keeps evals. Elene's pair is backup spec keeper and backup eval keeper. Sandro's pair is backup repo keeper and backup spec keeper. Roles stay fixed.
+
+Roles rotate or stay fixed: fixed. On Demo Day, anyone answers anything, so backup roles are how you learn each other's parts.
 
 ## How we decide
 Small things: whoever is doing the work decides. Big things (scope, stack, pivots): [majority vote / consensus / named tie-breaker].

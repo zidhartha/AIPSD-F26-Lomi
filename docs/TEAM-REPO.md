@@ -1,4 +1,4 @@
-# Team Repo Guide · [Team name]
+# Team Repo Guide · Lomi
 
 *Your team's GitHub rulebook for the whole capstone, from Lab 2 to Demo Day. Copy this file to `docs/TEAM-REPO.md`, fill in section 1 together in Lab 2, and keep it true. Sections 2 to 11 are the course standard: they change only with my agreement (last section).*
 
@@ -10,10 +10,10 @@
 
 | Member | GitHub username | Standing role |
 |---|---|---|
-| | | Repo keeper |
-| | | Spec keeper |
-| | | Eval keeper (from Week 4) |
-| | | |
+| Davit Jincharadze | zidhartha | Repo keeper and Spec keeper |
+| Irakli Giguashvili | Irakligig | Eval keeper (backup: Repo keeper) |
+| Elene Kifiani | Elene27 | Backup Spec keeper and backup Eval keeper |
+| Sandro Paikidze | SanndroP | Backup Repo keeper and backup Spec keeper |
 
 - **Repo keeper:** owns the repo; access, settings, branch rules, CI, tags. Makes the "ask first" changes to `.github/`.
 - **Spec keeper:** `docs/spec.md` and `AGENTS.md` stay true and current.
@@ -23,8 +23,10 @@ Teams of two: each person holds two roles. Roles decide who keeps a file honest,
 
 **Slice rota (recommended):** the person who drives the agent rotates every slice, and the reviewer is the next person in the rota, so everyone drives at least one slice before Week 4.
 
-Our capstone in one sentence: [product, for whom, why]
-Repo: [link] · Instructor access: [ZA-KIU collaborator / public] · Team OpenRouter key issued to: [name] (never paste the key here)
+Our capstone in one sentence: AI Mentor answers a new employee's questions from the company's own documents, so they stop asking a senior colleague the same basic questions.
+Repo: https://github.com/zidhartha/AIPSD-F26-Lomi · Instructor access: ZA-KIU not confirmed in this file yet · Team OpenRouter key issued to: not recorded here (never paste the key here)
+
+Slice rota: zidhartha, then Irakligig, then Elene27, then SanndroP.
 
 ---
 
