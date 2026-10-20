@@ -1,0 +1,35 @@
+{
+  "updated": "2026-10-12",
+  "courses": [
+    {
+      "code": "CS101",
+      "title": "Introduction to Programming",
+      "prerequisites": []
+    },
+    {
+      "code": "MATH101",
+      "title": "Calculus I",
+      "prerequisites": []
+    },
+    {
+      "code": "CS201",
+      "title": "Data Structures",
+      "prerequisites": ["CS101", "MATH101"]
+    },
+    {
+      "code": "MATH201",
+      "title": "Discrete Mathematics",
+      "prerequisites": ["MATH101"]
+    },
+    {
+      "code": "CS301",
+      "title": "Algorithms",
+      "prerequisites": ["CS201", "MATH201"]
+    },
+    {
+      "code": "CS350",
+      "title": "Databases",
+      "prerequisites": ["CS201"]
+    }
+  ]
+}
