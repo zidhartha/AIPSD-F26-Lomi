@@ -53,11 +53,11 @@ Companies can create a workspace, subscribe to a plan, upload their documentatio
 
 ## How It Works
 
-1. **Create a company workspace** — The company registers and chooses a subscription plan.
-2. **Upload documentation** — Administrators add internal guidelines, policies, and training materials.
-3. **Register employees** — Each employee receives an individual account.
-4. **Start learning** — Employees ask questions or follow guided training activities.
-5. **Learn and improve** — The AI mentor explains procedures, answers questions using company resources, and helps employees check their understanding.
+1. Create a company workspace — The company registers and chooses a subscription plan.
+2. Upload documentation — Administrators add internal guidelines, policies, and training materials.
+3. Register employees — Each employee receives an individual account.
+4. Start learning — Employees ask questions or follow guided training activities.
+5. Learn and improve — The AI mentor explains procedures, answers questions using company resources, and helps employees check their understanding.
 
 ## Target Audience
 
@@ -69,35 +69,14 @@ Companies can create a workspace, subscribe to a plan, upload their documentatio
 
 ## Core Principles
 
-* **Accuracy:** Answers should be grounded in the company’s available documentation.
-* **Transparency:** The AI should acknowledge when information is unavailable rather than inventing policies.
-* **Personalization:** Employees should receive guidance suited to their learning needs.
-* **Security:** Company documentation and employee information should be protected through appropriate access controls.
-* **Efficiency:** Reduce repetitive questions and make internal knowledge easier to access.
+* Accuracy: Answers should be grounded in the company’s available documentation.
+* Transparency: The AI should acknowledge when information is unavailable rather than inventing policies.
+* Personalization: Employees should receive guidance suited to their learning needs.
+* Security: Company documentation and employee information should be protected through appropriate access controls.
+* Efficiency: Reduce repetitive questions and make internal knowledge easier to access.
 
 ## Vision
 
 Our vision is to make AI Mentor a reliable virtual workplace mentor that helps every employee learn, adapt, and grow while enabling companies to deliver consistent and scalable onboarding and training.
 
 AI Mentor brings company knowledge closer to the people who need it — whenever they need it.
-
----
-
-## What runs today
-
-The first slice is handbook Q&A over a fictional company's documents ([data/corpus/](data/corpus/)), plus turning a photo of a policy page into text with a confidence check. Python 3.11, standard library only.
-
-```
-pip install -r requirements.txt
-python -m src.ask "How do I request time off?"             # needs OPENROUTER_API_KEY
-python -m src.ask --offline "How do I request time off?"   # no key, stand-in model
-python -m src.extract page.jpg                             # photo of a policy page
-python -m evals.run                                        # golden set; --offline without a key
-python -m pytest -q tests                                  # no key, no network
-```
-
-Replies are `{answer, citations, grounded}`. A question the documents do not answer gets one fixed refusal sentence, not a guess. The key and model come from the environment (`OPENROUTER_API_KEY`, `MODEL`; see [.env.example](.env.example)).
-
-- **Spec:** [docs/spec.md](docs/spec.md) · **Design Review:** [docs/DESIGN-REVIEW.md](docs/DESIGN-REVIEW.md)
-- **Evaluation:** [evals/golden.yaml](evals/golden.yaml), 5 questions; latest offline run 4/5 (0.80), [evals/results/](evals/results/)
-- **Team:** [TEAM-CONTRACT.md](TEAM-CONTRACT.md) · roles in [docs/TEAM-REPO.md](docs/TEAM-REPO.md)
