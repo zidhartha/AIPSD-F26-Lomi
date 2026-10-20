@@ -6,6 +6,7 @@
 | Name | GitHub | Primary role | Backup role |
 |---|---|---|---|
 | Davit Jincharadze  | Zidhartha | Backend Developer | AI Engineer |
+| Elene Kiphiani | Elene27 | QA / Evals | Product / Spec owner |
 
 Roles rotate or stay fixed: [choose]. On Demo Day, anyone answers anything, so backup roles are how you learn each other's parts.
 
