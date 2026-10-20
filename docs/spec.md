@@ -42,6 +42,10 @@ Not in this slice: AC5 is tested here because it is a pure check, but a model th
 
 A new hire photographs one printed company notice. `src/extract.py` returns `value`, `evidence`, and `confidence` for title, action, timing, and contact. `src/checks.py` `decide()` then routes it to accepted, confirm, review, or rejected. A missing or unevidenced required field is hard: it is shown empty, never prefilled. Spec: `docs/multimodal-spec.md`. Policy: `docs/confidence-policy.md`.
 
+## Grounded answer (Lab 4)
+
+`src/answer.py` retrieves handbook chunks with scores. Below the cosine threshold it refuses with the AC2 sentence and does not call a model. Otherwise the model must return `{answer, citations, grounded}`, and `check_citations()` refuses an unknown `[n]`, a missing `[n]`, or an uncited sentence. Spec: `docs/retrieval-spec.md`. Golden set: `evals/golden.yaml`.
+
 ## Napkin math
 
 This slice calls no model, so cost is $0 per question. The later answer call, at about 1,650 input tokens and 150 output tokens on `google/gemini-3.8-flash` ($0.75 / $3.75 per million, promo price checked 13 October 2026), is about $0.0018 per question. 50 questions/day × $0.0018 × 30 = $2.70 / month.

@@ -1,0 +1,191 @@
+[
+ {
+  "id": "code-review#1",
+  "doc_id": "code-review",
+  "title": "Code review",
+  "section": "Overview",
+  "text": "Open a pull request and ask one reviewer. Do not merge your own pull request. A review is required before the change reaches main."
+ },
+ {
+  "id": "handbook/documentation#1",
+  "doc_id": "handbook/documentation",
+  "title": "Documentation",
+  "section": "Where",
+  "text": "Write setup notes in the repo README, not in a personal message."
+ },
+ {
+  "id": "handbook/documentation#2",
+  "doc_id": "handbook/documentation",
+  "title": "Documentation",
+  "section": "Review",
+  "text": "A documentation change still needs one reviewer."
+ },
+ {
+  "id": "handbook/equipment#1",
+  "doc_id": "handbook/equipment",
+  "title": "Equipment",
+  "section": "Desk",
+  "text": "The office manager assigns a desk on day one, next to your team."
+ },
+ {
+  "id": "handbook/equipment#2",
+  "doc_id": "handbook/equipment",
+  "title": "Equipment",
+  "section": "Returns",
+  "text": "Return the laptop and badge to the office manager on your last day."
+ },
+ {
+  "id": "handbook/expenses#1",
+  "doc_id": "handbook/expenses",
+  "title": "Expenses",
+  "section": "Limit",
+  "text": "A meal with a client is reimbursed up to 40 GEL. File the receipt within 10 days."
+ },
+ {
+  "id": "handbook/expenses#2",
+  "doc_id": "handbook/expenses",
+  "title": "Expenses",
+  "section": "How",
+  "text": "Send the receipt to the office manager. Personal meals are not reimbursed."
+ },
+ {
+  "id": "handbook/first-day#1",
+  "doc_id": "handbook/first-day",
+  "title": "First day",
+  "section": "Arrival",
+  "text": "Arrive at 09:30. Collect your badge from the office manager."
+ },
+ {
+  "id": "handbook/first-day#2",
+  "doc_id": "handbook/first-day",
+  "title": "First day",
+  "section": "Accounts",
+  "text": "Your work email is created before you arrive. Sign in with that email."
+ },
+ {
+  "id": "handbook/holidays#1",
+  "doc_id": "handbook/holidays",
+  "title": "Holidays",
+  "section": "Company holidays",
+  "text": "The company observes the public holidays of Georgia. The office is closed those days."
+ },
+ {
+  "id": "handbook/holidays#2",
+  "doc_id": "handbook/holidays",
+  "title": "Holidays",
+  "section": "Planning",
+  "text": "Check the shared holiday calendar before you promise a deadline."
+ },
+ {
+  "id": "handbook/incidents#1",
+  "doc_id": "handbook/incidents",
+  "title": "Incidents",
+  "section": "Report",
+  "text": "Report a production incident in the #incidents channel the same day you see it."
+ },
+ {
+  "id": "handbook/incidents#2",
+  "doc_id": "handbook/incidents",
+  "title": "Incidents",
+  "section": "Severity",
+  "text": "A site that is down is severity 1. A typo on an internal page is severity 3."
+ },
+ {
+  "id": "handbook/leave-balance#1",
+  "doc_id": "handbook/leave-balance",
+  "title": "Leave balance",
+  "section": "Allowance",
+  "text": "Full-time employees get 20 paid leave days per calendar year."
+ },
+ {
+  "id": "handbook/leave-balance#2",
+  "doc_id": "handbook/leave-balance",
+  "title": "Leave balance",
+  "section": "Requests",
+  "text": "Those days are still requested in the HR form at least 5 working days ahead. Your manager approves the request."
+ },
+ {
+  "id": "handbook/office-hours#1",
+  "doc_id": "handbook/office-hours",
+  "title": "Office hours",
+  "section": "Building",
+  "text": "The office is open from 09:00 to 18:00 on weekdays."
+ },
+ {
+  "id": "handbook/office-hours#2",
+  "doc_id": "handbook/office-hours",
+  "title": "Office hours",
+  "section": "Remote",
+  "text": "Two remote days a week are allowed after your first month. Tell your manager the day before."
+ },
+ {
+  "id": "handbook/pairing#1",
+  "doc_id": "handbook/pairing",
+  "title": "Pairing",
+  "section": "When",
+  "text": "Pair on a change that touches authentication or payments."
+ },
+ {
+  "id": "handbook/pairing#2",
+  "doc_id": "handbook/pairing",
+  "title": "Pairing",
+  "section": "How",
+  "text": "One person types and the other reviews the diff as you go. Open the pull request when you both agree."
+ },
+ {
+  "id": "handbook/passwords#1",
+  "doc_id": "handbook/passwords",
+  "title": "Passwords",
+  "section": "Work accounts",
+  "text": "Use the company password manager. Do not send a password in Slack."
+ },
+ {
+  "id": "handbook/passwords#2",
+  "doc_id": "handbook/passwords",
+  "title": "Passwords",
+  "section": "Lost access",
+  "text": "Ask the office manager to reset a work account. Do not share your password with a teammate."
+ },
+ {
+  "id": "handbook/slack#1",
+  "doc_id": "handbook/slack",
+  "title": "Slack",
+  "section": "Channels",
+  "text": "Use #general for announcements and #help for questions a handbook page might answer."
+ },
+ {
+  "id": "handbook/slack#2",
+  "doc_id": "handbook/slack",
+  "title": "Slack",
+  "section": "Hours",
+  "text": "Do not expect a reply after 18:00. Urgent production issues go to #incidents."
+ },
+ {
+  "id": "handbook/standups#1",
+  "doc_id": "handbook/standups",
+  "title": "Standups",
+  "section": "When",
+  "text": "The team standup is at 10:00 on weekdays and lasts 15 minutes."
+ },
+ {
+  "id": "handbook/standups#2",
+  "doc_id": "handbook/standups",
+  "title": "Standups",
+  "section": "What to say",
+  "text": "Say what you finished, what you are doing today, and what is blocked."
+ },
+ {
+  "id": "laptop#1",
+  "doc_id": "laptop",
+  "title": "Laptop",
+  "section": "Overview",
+  "text": "New hires collect a laptop from the office manager on day one. Sign in with your work email. Lost laptop reports go to the office manager the same day."
+ },
+ {
+  "id": "time-off#1",
+  "doc_id": "time-off",
+  "title": "Time off",
+  "section": "Overview",
+  "text": "To request time off, file a request in the HR form at least 5 working days ahead. Your manager approves it. Sick time off can be filed the same day."
+ }
+]

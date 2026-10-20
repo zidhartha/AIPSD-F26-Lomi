@@ -1,0 +1,67 @@
+{
+ "ts": "2026-10-20T13:34:41+00:00",
+ "mode": "live",
+ "chat_model": "google/gemini-3.8-flash",
+ "embed_model": "openai/text-embedding-3-small",
+ "k": 5,
+ "passed": 5,
+ "total": 5,
+ "pass_rate": 1.0,
+ "threshold": 0.7,
+ "items": [
+  {
+   "id": "g1",
+   "type": "factual",
+   "pass": true,
+   "why": [],
+   "status": "answered",
+   "answer": "To request time off, file a request in the HR form at least 5 working days ahead [1]. Your manager approves the request [1]. Sick time off can be filed the same day [1].",
+   "cited": [
+    "time-off"
+   ]
+  },
+  {
+   "id": "g2",
+   "type": "factual",
+   "pass": true,
+   "why": [],
+   "status": "answered",
+   "answer": "A meal with a client is reimbursed up to 40 GEL [1].",
+   "cited": [
+    "handbook/expenses"
+   ]
+  },
+  {
+   "id": "g3",
+   "type": "reasoning",
+   "pass": true,
+   "why": [],
+   "status": "answered",
+   "answer": "New hires collect a laptop from the office manager on day one [1]. Full-time employees receive 20 paid leave days per calendar year [2].",
+   "cited": [
+    "laptop",
+    "handbook/leave-balance"
+   ]
+  },
+  {
+   "id": "g4",
+   "type": "edge",
+   "pass": true,
+   "why": [],
+   "status": "answered",
+   "answer": "To request time off, file a request in the HR form at least 5 working days ahead [1]. Your manager approves the request [1]. If it is sick time off, it can be filed the same day [1].",
+   "cited": [
+    "time-off"
+   ]
+  },
+  {
+   "id": "g5",
+   "type": "refusal",
+   "pass": true,
+   "why": [],
+   "status": "refused",
+   "answer": "That is not in the company documents.",
+   "cited": []
+  }
+ ]
+}
