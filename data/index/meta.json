@@ -1,0 +1,6 @@
+{
+ "embed_model": "openai/text-embedding-3-small",
+ "dims": 1536,
+ "chunks": 27,
+ "built_at": "2026-10-20T13:34:03+00:00"
+}

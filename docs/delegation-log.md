@@ -25,5 +25,5 @@
 - **Plan check:** The plan used the example's 0.25 threshold for every embedder. That was wrong for the offline hash.
 - **Came back wrong:** "What is the guest cafeteria menu on Friday?" scored 0.27 and the test reached the model. The first golden run was 3/5.
 - **Caught by:** `tests/test_answer.py` failing on the no-model refusal, then `python -m evals.run_golden` at k=5 and k=1.
-- **Decision:** Offline threshold 0.30. k stays 5. g3 and g4 were not weakened. The committed result stays 3/5 until a live run. `docs/decisions/0002-k-and-threshold.md`.
-- **Cost:** $0. The usage log is the offline stand-in.
+- **Decision:** Offline threshold 0.30. Live threshold stays 0.25. k stays 5. g3 and g4 were not weakened. The live run on 2026-10-20 passed 5/5: `evals/results/2026-10-20-1734-live-k5.json`. The cafeteria refusal in that run called the model.
+- **Cost:** five live answer calls, about $0.005 together, plus an embedding of the corpus well under $0.0001. The two notice photos were separate.

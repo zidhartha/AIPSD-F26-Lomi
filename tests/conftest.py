@@ -1,6 +1,7 @@
 """Tests stay offline: no key, no network. Logs go to a temp folder."""
 import os
 import tempfile
+from pathlib import Path
 
 _tmp = tempfile.mkdtemp(prefix="mentor-tests-")
 os.environ["MENTOR_OFFLINE"] = "1"
@@ -10,11 +11,20 @@ os.environ.pop("MENTOR_MIN_SCORE", None)
 
 import pytest  # noqa: E402
 
+from src.chunk import load_corpus  # noqa: E402
 from src.extract import Extraction, Field  # noqa: E402
+from src.index import build  # noqa: E402
+
+ROOT = Path(__file__).resolve().parents[1]
 
 
 def field(value, evidence, confidence=0.95):
     return Field(value=value, evidence=evidence, confidence=confidence)
+
+
+@pytest.fixture(scope="session")
+def index():
+    return build(load_corpus(ROOT / "data" / "corpus"))
 
 
 @pytest.fixture

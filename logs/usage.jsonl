@@ -19,3 +19,14 @@
 {"ts": "2026-10-20T12:46:43+00:00", "kind": "embed", "model": "offline/trigram-hash", "tokens_in": 8, "tokens_out": 0, "cost_usd": 0.0, "latency_ms": 0}
 {"ts": "2026-10-20T13:07:40+00:00", "kind": "chat", "model": "google/gemini-3.8-flash", "tokens_in": 1813, "tokens_out": 290, "cost_usd": 0.002447, "latency_ms": 5228}
 {"ts": "2026-10-20T13:08:44+00:00", "kind": "chat", "model": "google/gemini-3.8-flash", "tokens_in": 1813, "tokens_out": 358, "cost_usd": 0.002702, "latency_ms": 10457}
+{"ts": "2026-10-20T13:34:03+00:00", "kind": "embed", "model": "text-embedding-3-small", "tokens_in": 622, "tokens_out": 0, "cost_usd": 0.0, "latency_ms": 2057}
+{"ts": "2026-10-20T13:34:20+00:00", "kind": "embed", "model": "text-embedding-3-small", "tokens_in": 7, "tokens_out": 0, "cost_usd": 0.0, "latency_ms": 1198}
+{"ts": "2026-10-20T13:34:25+00:00", "kind": "chat", "model": "google/gemini-3.8-flash", "tokens_in": 320, "tokens_out": 327, "cost_usd": 0.001466, "latency_ms": 5115}
+{"ts": "2026-10-20T13:34:26+00:00", "kind": "embed", "model": "text-embedding-3-small", "tokens_in": 9, "tokens_out": 0, "cost_usd": 0.0, "latency_ms": 649}
+{"ts": "2026-10-20T13:34:29+00:00", "kind": "chat", "model": "google/gemini-3.8-flash", "tokens_in": 301, "tokens_out": 128, "cost_usd": 0.000706, "latency_ms": 2774}
+{"ts": "2026-10-20T13:34:29+00:00", "kind": "embed", "model": "text-embedding-3-small", "tokens_in": 19, "tokens_out": 0, "cost_usd": 0.0, "latency_ms": 894}
+{"ts": "2026-10-20T13:34:34+00:00", "kind": "chat", "model": "google/gemini-3.8-flash", "tokens_in": 327, "tokens_out": 262, "cost_usd": 0.001228, "latency_ms": 4298}
+{"ts": "2026-10-20T13:34:34+00:00", "kind": "embed", "model": "text-embedding-3-small", "tokens_in": 7, "tokens_out": 0, "cost_usd": 0.0, "latency_ms": 612}
+{"ts": "2026-10-20T13:34:38+00:00", "kind": "chat", "model": "google/gemini-3.8-flash", "tokens_in": 332, "tokens_out": 208, "cost_usd": 0.001029, "latency_ms": 3744}
+{"ts": "2026-10-20T13:34:39+00:00", "kind": "embed", "model": "text-embedding-3-small", "tokens_in": 9, "tokens_out": 0, "cost_usd": 0.0, "latency_ms": 604}
+{"ts": "2026-10-20T13:34:41+00:00", "kind": "chat", "model": "google/gemini-3.8-flash", "tokens_in": 306, "tokens_out": 137, "cost_usd": 0.000743, "latency_ms": 2362}

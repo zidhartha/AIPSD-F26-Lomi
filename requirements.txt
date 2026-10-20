@@ -1,4 +1,6 @@
 pytest
 pydantic
 pillow
+numpy
 openai
+pyyaml
