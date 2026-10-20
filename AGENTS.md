@@ -3,7 +3,7 @@ A mentor that answers a new employee's questions from their company's own docume
 
 ## Commands
 install:  pip install -r requirements.txt
-run:      not on main yet. First slice target: python -m src.ask "How do I request time off?"
+run:      python -m src.ask "How do I request time off?"
 test:     python -m pytest -q tests
 
 ## Conventions
