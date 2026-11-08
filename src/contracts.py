@@ -20,7 +20,7 @@ Question = Annotated[
     Field(
         min_length=8,
         max_length=120,
-        pattern=r"^[A-Za-z0-9][A-Za-z0-9 ?,'-]{7,119}$",
+        
         description="A handbook question in plain words, 8 to 120 characters",
     ),
 ]
