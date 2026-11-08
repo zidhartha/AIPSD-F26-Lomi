@@ -9,6 +9,7 @@ The contract for every tool lives in `src/contracts.py`; the function and regist
 | Tool | Function | Effect | Owner | Golden set |
 |---|---|---|---|---|
 | `search_handbook` | retrieve the passages that best match a question, with their source | reads | Irakligig | `evals/tools/Irakligig.yaml` |
+| `route_notice` | route the lines read from a notice photo with `checks.decide()` (Lab 3): accepted, confirm, review, or rejected. Contract in `src/notice_contracts.py`, function in `src/notice_tool.py`, MCP in `src/mcp_notice.py` | reads | zidhartha | `evals/tools/zidhartha.yaml` |
 | _(next member)_ | _(a different capstone function)_ | | | |
 
 A tool that deletes, pays, or sends to other people needs the instructor's agreement by email before it is built.
