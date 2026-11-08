@@ -21,7 +21,6 @@ AnswerText = Annotated[
     Field(
         min_length=1,
         max_length=240,
-        pattern=r"^[A-Za-z0-9][A-Za-z0-9 .,'()?:;\-\[\]]{0,239}$",
         description="One paragraph of the proposed answer, at most 240 characters, with [n] markers. No line breaks.",
     ),
 ]
