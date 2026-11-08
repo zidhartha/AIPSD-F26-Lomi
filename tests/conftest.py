@@ -7,6 +7,7 @@ _tmp = tempfile.mkdtemp(prefix="mentor-tests-")
 os.environ["MENTOR_OFFLINE"] = "1"
 os.environ["MENTOR_USAGE_LOG"] = os.path.join(_tmp, "usage.jsonl")
 os.environ["MENTOR_ANSWER_LOG"] = os.path.join(_tmp, "answers.jsonl")
+os.environ["MENTOR_TOOL_LOG"] = os.path.join(_tmp, "tools.jsonl")
 os.environ.pop("MENTOR_MIN_SCORE", None)
 
 import pytest  # noqa: E402

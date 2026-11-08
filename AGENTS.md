@@ -29,6 +29,8 @@ test:     python -m pytest -q tests
 
 ## Never
 - Read or write .env, or print a key
+- Never put a user, student or account id in a tool's arguments
+- Never add a tool that deletes or sends without asking first
 - Delete, skip, or weaken a test to make it pass
 - Invent a company rule that was not in the retrieved documents
 

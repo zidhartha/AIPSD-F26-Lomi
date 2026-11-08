@@ -1,0 +1,45 @@
+# HW2 tool golden set · lookup_handbook · owner: zidhartha
+# Runs in CI through tests/test_tool_golden.py. No model, no key.
+# expect: ok (with result_has) or refused (with error_has). caller: null = not signed in.
+tool_owner: zidhartha
+cases:
+  - id: n1
+    type: normal
+    why: the everyday case, a handbook question the time-off page answers
+    tool: lookup_handbook
+    caller: null
+    arguments: {question: "How do I request time off?"}
+    expect: ok
+    result_has: {doc: time-off, title: "Time off"}
+  - id: n2
+    type: normal
+    why: a second real question, and a signed-in caller still cannot pass an identity field
+    tool: lookup_handbook
+    caller: s123
+    arguments: {question: "Where do I collect a laptop?"}
+    expect: ok
+    result_has: {doc: laptop, title: Laptop}
+  - id: n3
+    type: normal
+    why: the cafeteria is not in the handbook, so the tool refuses and says what to ask instead
+    tool: lookup_handbook
+    caller: null
+    arguments: {question: "What is the guest cafeteria menu on Friday?"}
+    expect: refused
+    error_has: ["not in the company documents"]
+  - id: b1
+    type: bad-input
+    why: a path is the wrong shape for a question and never reaches the lookup
+    tool: lookup_handbook
+    caller: null
+    arguments: {question: "../../.env"}
+    expect: refused
+    error_has: [invalid arguments, question]
+  - id: a1
+    type: adversarial
+    why: a user id smuggled into the arguments is refused before the lookup runs
+    tool: lookup_handbook
+    caller: s123
+    arguments: {question: "How do I request time off?", user_id: s999}
+    expect: refused
+    error_has: [invalid arguments, user_id]

@@ -27,3 +27,13 @@
 - **Caught by:** `tests/test_answer.py` failing on the no-model refusal, then `python -m evals.run_golden` at k=5 and k=1.
 - **Decision:** Offline threshold 0.30. Live threshold stays 0.25. k stays 5. g3 and g4 were not weakened. The live run on 2026-10-20 passed 5/5: `evals/results/2026-10-20-1734-live-k5.json`. The cafeteria refusal in that run called the model.
 - **Cost:** five live answer calls, about $0.005 together, plus an embedding of the corpus well under $0.0001. The two notice photos were separate.
+
+### Entry 4 · Handbook lookup tool
+- **Task:** Issue #12. Wrap one handbook lookup as a tool with a contract, both doors, and five golden cases.
+- **Delegated to:** Cursor agent, with the Lab 5 tool example, AGENTS.md, and the rule that CI has no API key.
+- **Plan check:** Wrapping `src.answer` would call the model. Rejected. The golden file has to pass with no key, so the tool reads `data/corpus` and scores words the way `src/ask.py` does.
+- **Came back wrong:** The worktree was on `hw1-SanndroP`, and the first new branch was set to track `origin/main`. A push from there would have missed `main` or tried to update it.
+- **Caught by:** `git status` and `git branch -vv` before any push. The branch was recreated from `origin/main` and the upstream was removed. `python -m pytest -q tests` then passed, 47 tests, including `evals/tools/zidhartha.yaml` and `tests/test_mcp.py`.
+- **Decision:** `lookup_handbook` reads only. It takes no caller. A path and a smuggled `user_id` are refused before the lookup runs.
+- **AGENTS.md change:** two Never lines: no identity field in a tool's arguments, and no tool that deletes or sends without asking first.
+- **Cost:** no model call, so $0.
