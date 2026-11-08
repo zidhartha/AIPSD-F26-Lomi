@@ -27,3 +27,13 @@
 - **Caught by:** `tests/test_answer.py` failing on the no-model refusal, then `python -m evals.run_golden` at k=5 and k=1.
 - **Decision:** Offline threshold 0.30. Live threshold stays 0.25. k stays 5. g3 and g4 were not weakened. The live run on 2026-10-20 passed 5/5: `evals/results/2026-10-20-1734-live-k5.json`. The cafeteria refusal in that run called the model.
 - **Cost:** five live answer calls, about $0.005 together, plus an embedding of the corpus well under $0.0001. The two notice photos were separate.
+
+### Entry 4 · Notice route tool (HW2, zidhartha)
+- **Task:** Issue #17. Wrap one capstone function as a tool with a contract, both doors, and golden cases in CI.
+- **Delegated to:** Cursor agent, with the Lab 5 tool example, `AGENTS.md`, and `docs/tool-contracts.md`.
+- **Plan check:** The first plan wrapped a handbook lookup. Rejected after the fact, see below. The second plan wraps `checks.decide()` from Lab 3, which calls no model, so the golden file runs in CI with no key.
+- **Came back wrong:** The first version, `lookup_handbook` in pull request #13, returned the best handbook passage for a question. That is the same capability as `search_handbook`, which merged first, and it rewrote the five shared tool files. The brief says no two members wrap the same function.
+- **Caught by:** the owners table in `docs/tool-contracts.md`, and five add/add merge conflicts against `main`. Pull request #13 was closed without merging.
+- **Decision:** `route_notice` lives in its own files. The only change to the shared tool files is one import and one entry in `TOOLS`. `python -m pytest -q tests`: 67 passed, including Irakli's cases.
+- **AGENTS.md change:** two Never lines: no identity field in a tool's arguments, and no tool that deletes or sends without asking first.
+- **Cost:** no model call, so $0.

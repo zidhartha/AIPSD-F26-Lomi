@@ -26,6 +26,7 @@ from typing import Callable
 from pydantic import BaseModel
 
 from .contracts import Contract, SearchHandbook
+from .notice_tool import RouteNotice, route_notice
 
 CORPUS = Path(os.environ.get("AIMENTOR_CORPUS", Path(__file__).resolve().parents[1] / "data" / "corpus"))
 
@@ -130,6 +131,7 @@ class Tool:
 
 TOOLS = {t.name: t for t in [
     Tool("search_handbook", SearchHandbook, search_handbook),
+    Tool("route_notice", RouteNotice, route_notice),
 ]}
 
 
