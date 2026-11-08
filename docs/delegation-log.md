@@ -46,3 +46,10 @@
 - **Caught by:** `tests/test_mcp_cite.py::test_both_doors_describe_the_arguments_identically`. The list is now one `Citations` type used by both doors.
 - **Decision:** `check_citations` lives in its own files. The only edit in `src/tools.py` is one import and one `TOOLS` entry. `python -m pytest -q tests` passed, including the other members' cases.
 - **Cost:** no model call, so $0.
+
+### Entry 6 · Photo scale tool (HW2, Elene27)
+- **Task:** Wrap one capstone function that is not `search_handbook`, `route_notice`, or `check_citations`.
+- **Delegated to:** Cursor agent, with the `route_notice` file layout, `AGENTS.md`, and `docs/tool-contracts.md`.
+- **Plan check:** Wrapping retrieval, `decide()`, or `check_citations()` was rejected before any file was written. `images.downscale()` calls no model, so the golden file can run in CI with no key. A file path was rejected too: the model would choose the path.
+- **Decision:** `scale_notice` lives in its own files. The only edit in `src/tools.py` is one import and one `TOOLS` entry. Width, height, and the 1024-pixel cap stay inside the contract. The model cannot set the cap.
+- **Cost:** no model call, so $0.
