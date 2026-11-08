@@ -21,7 +21,6 @@ NoticeText = Annotated[
     Field(
         min_length=1,
         max_length=120,
-        pattern=r"^[A-Za-z0-9][A-Za-z0-9 .,'()?:-]{0,119}$",
         description="One line of text as printed on the notice, at most 120 characters",
     ),
 ]
