@@ -1,51 +1,119 @@
-"""The one place a model is called, per AGENTS.md. Imported lazily by src/act.py, so
-tests and CI never import it and never need a key.
+"""The only file that talks to a model.
 
-complete_tools() sends messages plus tool schemas to the model and returns the reply in a
-small fixed shape: {content, tool_calls, reasoning_details}. The key comes from the
-environment (OPENROUTER_API_KEY), never from code. Every call appends one line to
-logs/usage.jsonl: model, tokens in, tokens out, cost, latency.
+Lab 3 sends a notice photo and a JSON schema. Lab 4 adds embed() and uses the
+same call for a grounded answer. MENTOR_OFFLINE=1 uses src/offline.py.
+max_tokens is capped so a request cannot reserve the model's full output budget.
 """
 from __future__ import annotations
 
+import base64
 import json
 import os
 import time
 from datetime import datetime, timezone
 from pathlib import Path
 
-USAGE_LOG = Path(os.environ.get("AIMENTOR_USAGE_LOG", "logs/usage.jsonl"))
-MODEL = os.environ.get("MODEL", "google/gemini-3.8-flash")
+import numpy as np
+from openai import OpenAI
+
+from . import offline
+
+OPENROUTER_BASE_URL = "https://openrouter.ai/api/v1"
+LOG_PATH = Path(os.environ.get("MENTOR_USAGE_LOG", "logs/usage.jsonl"))
+CHAT_MODEL = os.environ.get("MODEL", "google/gemini-3.8-flash")
+EMBED_MODEL = os.environ.get("EMBED_MODEL", "openai/text-embedding-3-small")
+OFFLINE = os.environ.get("MENTOR_OFFLINE") == "1"
+
+# USD per million tokens (input, output). Promo price checked 13 October 2026.
+PRICES = {
+    "google/gemini-3.8-flash": (0.75, 3.75),
+    "openai/text-embedding-3-small": (0.02, 0.0),
+    offline.MODEL: (0.0, 0.0),
+}
+
+_client: OpenAI | None = None
 
 
-def ms_since(t0: float) -> float:
-    return round((time.perf_counter() - t0) * 1000, 1)
+def get_client() -> OpenAI:
+    global _client
+    if _client is None:
+        key = os.environ.get("OPENROUTER_API_KEY")
+        if not key:
+            raise RuntimeError("OPENROUTER_API_KEY is not set; copy .env.example to .env")
+        _client = OpenAI(base_url=OPENROUTER_BASE_URL, api_key=key)
+    return _client
 
 
-def complete_tools(messages: list[dict], tools: list[dict]) -> dict:
-    """Call the model once with tools. Returns {content, tool_calls, reasoning_details}."""
-    from openai import OpenAI  # imported here so importing this module never needs the package
-
-    key = os.environ.get("OPENROUTER_API_KEY")
-    if not key:
-        raise RuntimeError("OPENROUTER_API_KEY is not set. Tests and CI must not reach this path.")
-
-    client = OpenAI(base_url="https://openrouter.ai/api/v1", api_key=key)
-    t0 = time.perf_counter()
-    resp = client.chat.completions.create(model=MODEL, messages=messages, tools=tools)
-    choice = resp.choices[0].message
-    calls = [{"id": c.id, "name": c.function.name, "arguments": c.function.arguments}
-             for c in (choice.tool_calls or [])]
-    _log_usage(resp, ms_since(t0))
-    return {"content": choice.content, "tool_calls": calls,
-            "reasoning_details": getattr(choice, "reasoning_details", None)}
+class _LazyClient:
+    def __getattr__(self, name):
+        return getattr(get_client(), name)
 
 
-def _log_usage(resp, latency_ms: float) -> None:
-    u = getattr(resp, "usage", None)
-    line = {"ts": datetime.now(timezone.utc).isoformat(timespec="seconds"), "model": MODEL,
-            "tokens_in": getattr(u, "prompt_tokens", None), "tokens_out": getattr(u, "completion_tokens", None),
-            "cost": getattr(u, "cost", None), "latency_ms": latency_ms}
-    USAGE_LOG.parent.mkdir(parents=True, exist_ok=True)
-    with USAGE_LOG.open("a", encoding="utf-8") as f:
-        f.write(json.dumps(line) + "\n")
+client = _LazyClient()
+
+
+def data_url(image: bytes) -> str:
+    return "data:image/jpeg;base64," + base64.b64encode(image).decode("ascii")
+
+
+def cost_usd(model: str, tokens_in: int, tokens_out: int) -> float:
+    price_in, price_out = PRICES.get(model, (0.0, 0.0))
+    return round((tokens_in * price_in + tokens_out * price_out) / 1_000_000, 6)
+
+
+def log_usage(resp, latency_ms: int = 0, kind: str = "chat") -> dict:
+    usage = getattr(resp, "usage", None)
+    tokens_in = getattr(usage, "prompt_tokens", 0) or 0
+    tokens_out = getattr(usage, "completion_tokens", 0) or 0
+    model = getattr(resp, "model", None) or (EMBED_MODEL if kind == "embed" else CHAT_MODEL)
+    line = {
+        "ts": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+        "kind": kind,
+        "model": model,
+        "tokens_in": tokens_in,
+        "tokens_out": tokens_out,
+        "cost_usd": cost_usd(model, tokens_in, tokens_out),
+        "latency_ms": latency_ms,
+    }
+    LOG_PATH.parent.mkdir(parents=True, exist_ok=True)
+    with LOG_PATH.open("a", encoding="utf-8") as handle:
+        handle.write(json.dumps(line) + "\n")
+    return line
+
+
+def complete_json(prompt: str, image: bytes | None = None, schema: dict | None = None) -> dict:
+    if OFFLINE:
+        started = time.perf_counter()
+        out, resp = offline.complete_json(prompt)
+        log_usage(resp, latency_ms=int((time.perf_counter() - started) * 1000))
+        return out
+    content: list[dict] = [{"type": "text", "text": prompt}]
+    if image is not None:
+        content.append({"type": "image_url", "image_url": {"url": data_url(image)}})
+    started = time.perf_counter()
+    resp = client.chat.completions.create(
+        model=CHAT_MODEL,
+        messages=[{"role": "user", "content": content}],
+        response_format={
+            "type": "json_schema",
+            "json_schema": {"name": "reply", "schema": schema or {}, "strict": True},
+        },
+        temperature=0,
+        max_tokens=1024,
+    )
+    log_usage(resp, latency_ms=int((time.perf_counter() - started) * 1000))
+    return json.loads(resp.choices[0].message.content)
+
+
+def embed(texts: list[str]) -> np.ndarray:
+    if OFFLINE:
+        return offline.embed(texts, log=log_usage)
+    started = time.perf_counter()
+    resp = client.embeddings.create(model=EMBED_MODEL, input=texts)
+    log_usage(resp, latency_ms=int((time.perf_counter() - started) * 1000), kind="embed")
+    vectors = np.array([item.embedding for item in resp.data], dtype=np.float32)
+    return vectors / np.linalg.norm(vectors, axis=1, keepdims=True)
+
+
+def embed_model_name() -> str:
+    return offline.MODEL if OFFLINE else EMBED_MODEL

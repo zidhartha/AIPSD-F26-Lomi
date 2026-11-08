@@ -1,0 +1,71 @@
+{
+  "updated": "2026-10-13",
+  "instructors": [
+    {
+      "name": "Nino Beridze",
+      "department": "Computer Science",
+      "blocks": [
+        {
+          "day": "Thursday",
+          "start": "10:00",
+          "end": "11:00",
+          "room": "A-118",
+          "mode": "appointment"
+        },
+        {
+          "day": "Tuesday",
+          "start": "14:00",
+          "end": "15:30",
+          "room": "A-118",
+          "mode": "drop-in"
+        }
+      ]
+    },
+    {
+      "name": "Giorgi Kapanadze",
+      "department": "Mathematics",
+      "blocks": []
+    },
+    {
+      "name": "Mariam Gelashvili",
+      "department": "Physics",
+      "on_leave_until": "2026-11-02",
+      "blocks": [
+        {
+          "day": "Monday",
+          "start": "13:00",
+          "end": "14:00",
+          "room": "C-010",
+          "mode": "drop-in"
+        }
+      ]
+    },
+    {
+      "name": "Luka Tsintsadze",
+      "department": "Computer Science",
+      "blocks": [
+        {
+          "day": "Wednesday",
+          "start": "16:00",
+          "end": "17:00",
+          "room": "B-012",
+          "mode": "drop-in"
+        },
+        {
+          "day": "Wednesday",
+          "start": "09:00",
+          "end": "10:00",
+          "room": "B-012",
+          "mode": "appointment"
+        },
+        {
+          "day": "Monday",
+          "start": "11:00",
+          "end": "12:00",
+          "room": "B-012",
+          "mode": "drop-in"
+        }
+      ]
+    }
+  ]
+}

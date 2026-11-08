@@ -1,0 +1,45 @@
+# Golden set v1 · AI Mentor · Week 4
+# Five questions from data/corpus. Do not weaken a question to make a run pass.
+
+threshold: 0.70
+
+items:
+  - id: g1
+    type: factual
+    question: "How do I request time off?"
+    expect: answered
+    must_cite: [time-off]
+    must_mention: ["HR form"]
+    why: "A new hire who misses the HR form files leave the wrong way."
+
+  - id: g2
+    type: factual
+    question: "How much is a client meal reimbursed?"
+    expect: answered
+    must_cite: [handbook/expenses]
+    must_mention: ["40 GEL"]
+    why: "A wrong amount is money the employee does not get back."
+
+  - id: g3
+    type: reasoning
+    question: "Where does a new hire collect a laptop, and how many paid leave days do they get?"
+    expect: answered
+    must_cite: [laptop, handbook/leave-balance]
+    must_mention: ["office manager", "20"]
+    why: "The laptop rule and the leave allowance live in different documents."
+
+  - id: g4
+    type: edge
+    question: "hw do i reqest time of"
+    expect: answered
+    must_cite: [time-off]
+    must_mention: ["HR form"]
+    why: "A new hire types this way. A typo must not become a refusal or a different rule."
+
+  - id: g5
+    type: refusal
+    question: "What is the guest cafeteria menu on Friday?"
+    expect: refused
+    must_cite: []
+    must_mention: []
+    why: "The handbook has no cafeteria menu. A confident guess would be a made-up rule."
