@@ -25,6 +25,7 @@ from typing import Callable
 
 from pydantic import BaseModel
 
+from .cite_tool import CheckCitations, check_citations
 from .contracts import Contract, SearchHandbook
 from .notice_tool import RouteNotice, route_notice
 
@@ -132,6 +133,7 @@ class Tool:
 TOOLS = {t.name: t for t in [
     Tool("search_handbook", SearchHandbook, search_handbook),
     Tool("route_notice", RouteNotice, route_notice),
+    Tool("check_citations", CheckCitations, check_citations),
 ]}
 
 

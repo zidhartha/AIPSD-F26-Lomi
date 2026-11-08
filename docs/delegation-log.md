@@ -37,3 +37,12 @@
 - **Decision:** `route_notice` lives in its own files. The only change to the shared tool files is one import and one entry in `TOOLS`. `python -m pytest -q tests`: 67 passed, including Irakli's cases.
 - **AGENTS.md change:** two Never lines: no identity field in a tool's arguments, and no tool that deletes or sends without asking first.
 - **Cost:** no model call, so $0.
+
+### Entry 5 · Citation check tool (HW2, SanndroP)
+- **Task:** Wrap one capstone function that is not `search_handbook` or `route_notice`.
+- **Delegated to:** Cursor agent, with the `route_notice` file layout, `AGENTS.md`, and `docs/tool-contracts.md`.
+- **Plan check:** A second retrieval tool was rejected before any file was written. `answer.check_citations()` calls no model, so the golden file can run in CI with no key.
+- **Came back wrong:** The MCP parameter for `citations` was a bare list. The function-calling schema also had `maxItems: 5` and the field description. The two doors did not match.
+- **Caught by:** `tests/test_mcp_cite.py::test_both_doors_describe_the_arguments_identically`. The list is now one `Citations` type used by both doors.
+- **Decision:** `check_citations` lives in its own files. The only edit in `src/tools.py` is one import and one `TOOLS` entry. `python -m pytest -q tests` passed, including the other members' cases.
+- **Cost:** no model call, so $0.
