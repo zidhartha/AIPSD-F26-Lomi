@@ -26,7 +26,6 @@ PhotoLabel = Annotated[
     Field(
         min_length=1,
         max_length=80,
-        pattern=r"^[A-Za-z0-9][A-Za-z0-9 .,'()?:-]{0,79}$",
         description="One short line naming what the photo shows, at most 80 characters. No line breaks.",
     ),
 ]
